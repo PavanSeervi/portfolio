@@ -1,0 +1,533 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+    /* Changed from Poppins to Raleway */
+}
+
+body {
+    background: #DFE8E6;
+    /* Sea Mist */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background: #a0430A;
+    /* Burnt Copper */
+    color: #EFE9E0;
+    /* Soft Ivory */
+    padding: 2rem 1rem;
+    z-index: 100;
+}
+
+.sidebar h1 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.nav-menu {
+    list-style: none;
+}
+
+.nav-menu li a {
+    color: #EFE9E0;
+    /* Soft Ivory */
+    text-decoration: none;
+    font-weight: 600;
+    display: block;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    transition: background-color 0.3s, color 0.3s;
+    /* Added transition for smoother effect */
+}
+
+.nav-menu li a:hover {
+    color: #EFE9E0;
+    /* Soft Ivory - as requested */
+    background-color: #8a3708;
+    /* Slightly darker Burnt Copper for contrast */
+    text-decoration: underline;
+    /* Added underline for additional hover feedback */
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    /* Hidden by default on larger screens */
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    background: none;
+    /* Ensure no background interferes */
+    border: none;
+    /* Remove default button border */
+    padding: 0;
+    /* Reset padding */
+}
+
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background: #EFE9E0;
+    /* Soft Ivory - Ensure visibility against Burnt Copper */
+    transition: all 0.3s;
+}
+
+main {
+    margin-left: 250px;
+    padding: 2rem;
+}
+
+/* Ensure hero section has a contrasting background */
+#hero {
+    background: linear-gradient(135deg, #a0430A, #a0430A);
+    /* Burnt Copper - Update to #DFE8E6 if gradient intended */
+    color: #EFE9E0;
+    /* Soft Ivory */
+    text-align: center;
+    padding: 6rem 2rem;
+}
+
+.hero-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+/* Button styling for anchor tags */
+.btn {
+    display: inline-block;
+    /* Make anchor tags behave like buttons */
+    padding: 0.8rem 2rem;
+    background-color: #EFE9E0;
+    /* Soft Ivory - Explicitly set background */
+    color: #a0430A;
+    /* Burnt Copper - Text color for contrast */
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 1rem;
+    font-weight: 600;
+    border: 2px solid #a0430A;
+    /* Burnt Copper border for definition */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Smooth transition */
+    cursor: pointer;
+    /* Indicate interactivity */
+}
+
+/* Hover effect */
+.btn:hover {
+    background-color: #a0430A;
+    /* Burnt Copper on hover */
+    color: #EFE9E0;
+    /* Soft Ivory text on hover */
+    text-decoration: none;
+    /* Ensure no underline on hover */
+}
+
+/* Specificity fix for hero section buttons */
+#hero .btn {
+    background-color: #EFE9E0;
+    /* Ensure it applies in hero section */
+    color: #a0430A;
+}
+
+section {
+    max-width: 1200px;
+    margin: 4rem auto;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: #a0430A;
+    /* Burnt Copper */
+}
+
+/* Skills */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-card {
+    background: #EFE9E0;
+    /* Soft Ivory */
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.skill-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #a0430A;
+    /* Burnt Copper */
+}
+
+.progress-bar {
+    background: #e0e0e0;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #a0430A, #DFE8E6);
+    /* Burnt Copper to Sea Mist */
+    transition: width 0.5s ease-in-out;
+}
+
+.skill-card::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #a0430A;
+    /* Burnt Copper */
+    color: #EFE9E0;
+    /* Soft Ivory */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+}
+
+.skill-card:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.exp-card,
+.project-card {
+    background: #EFE9E0;
+    /* Soft Ivory */
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    max-width: 100%;
+}
+
+.carousel-item {
+    min-width: 100%;
+    background: #a0430A;
+    /* Burnt Copper */
+    color: #EFE9E0;
+    /* Soft Ivory */
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 5px;
+    transition: transform 0.5s;
+}
+
+#prev-btn,
+#next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #EFE9E0;
+    /* Soft Ivory */
+    border: none;
+    padding: 0.5rem;
+    color: #a0430A;
+    /* Burnt Copper */
+    cursor: pointer;
+}
+
+#prev-btn {
+    left: 0;
+}
+
+#next-btn {
+    right: 0;
+}
+
+/* Contact Form */
+.contact-form {
+    background: #EFE9E0;
+    /* Soft Ivory */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .form-label {
+    color: #a0430A;
+    /* Burnt Copper */
+    font-weight: 600;
+}
+
+.contact-form .form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s;
+}
+
+.contact-form .form-control:focus {
+    border-color: #a0430A;
+    /* Burnt Copper */
+    box-shadow: 0 0 5px rgba(160, 67, 10, 0.5);
+}
+
+.contact-form .btn-primary {
+    background: #EFE9E0;
+    /* Soft Ivory */
+    border: none;
+    padding: 0.8rem;
+    font-weight: 600;
+    color: #a0430A;
+    /* Burnt Copper */
+    transition: background 0.3s;
+}
+
+.contact-form .btn-primary:hover {
+    background: #a0430A;
+    /* Burnt Copper */
+    color: #EFE9E0;
+    /* Soft Ivory */
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #a0430A;
+    /* Burnt Copper */
+    color: #EFE9E0;
+    /* Soft Ivory */
+    margin-top: 4rem;
+}
+
+/* Education Section */
+#education {
+    max-width: 1200px;
+    margin: 4rem auto;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s forwards;
+}
+
+.education-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    /* Space between education cards */
+}
+
+.education-card {
+    background: #EFE9E0;
+    /* Soft Ivory */
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.education-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #a0430A;
+    /* Burnt Copper */
+    margin-bottom: 0.5rem;
+}
+
+.education-card .institution {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.education-card .duration {
+    font-size: 1rem;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.education-card .details {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.4;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        z-index: 1000;
+        /* Ensure sidebar stays on top */
+    }
+
+    .sidebar h1 {
+        font-size: 1.5rem;
+        /* Slightly smaller on mobile for better fit */
+    }
+
+    .hamburger {
+        display: flex;
+        /* Show hamburger on mobile */
+        order: 2;
+        /* Ensure it appears after the h1 in flex order */
+        margin-left: auto;
+        /* Push to the right */
+    }
+
+    .nav-menu {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        /* Use 100% to dynamically match sidebar height */
+        left: 0;
+        background: #a0430A;
+        /* Burnt Copper */
+        padding: 1rem;
+        z-index: 999;
+        /* Ensure menu is below sidebar but above content */
+        transition: opacity 0.3s ease-in-out;
+        /* Smooth appearance */
+        opacity: 0;
+        /* Start hidden for transition effect */
+    }
+
+    .nav-menu.active {
+        display: block;
+        /* Show menu when active */
+        opacity: 1;
+        /* Fade in when active */
+    }
+
+    .nav-menu li a:focus {
+        outline: 2px solid #EFE9E0;
+        /* Accessibility: focus state for keyboard navigation */
+        outline-offset: 2px;
+    }
+
+    main {
+        margin-left: 0;
+        padding: 1rem;
+        margin-top: 60px;
+        /* Match sidebar height */
+    }
+
+    .hero-content h2 {
+        font-size: 2rem;
+        /* Adjusted for mobile */
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        /* Consistent smaller size for all h2 on mobile */
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .education-card {
+        padding: 1rem;
+    }
+
+    .education-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .education-card .institution {
+        font-size: 1rem;
+    }
+
+    .education-card .duration {
+        font-size: 0.9rem;
+    }
+
+    .education-card .details {
+        font-size: 0.85rem;
+    }
+
+}
+
+@media (min-width: 769px) {
+    .hamburger {
+        display: none;
+    }
+
+    .nav-menu {
+        display: block;
+        position: static;
+        /* Reset absolute positioning */
+        width: auto;
+        /* Reset width */
+        padding: 0;
+        /* Reset padding */
+        opacity: 1;
+        /* Ensure visible */
+        transition: none;
+        /* No transition needed on desktop */
+    }
+
+    main {
+        margin-left: 250px;
+        /* Restore desktop margin */
+    }
+
+    .education-container {
+        flex-direction: column;
+    }
+}
