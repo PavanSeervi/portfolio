@@ -29,25 +29,40 @@ hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('open');
 });
 
-// Carousel functionality
-const carousel = document.querySelector('.carousel');
-const items = document.querySelectorAll('.carousel-item');
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
-let currentIndex = 0;
+// Carousel functionality with debugging
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('.carousel');
+    const items = document.querySelectorAll('.carousel-item');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    let currentIndex = 0;
 
-function updateCarousel() {
-    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-}
+    console.log('Carousel items:', items); // Debug: Check if items are found
 
-nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % items.length;
+    if (!carousel || items.length === 0) {
+        console.error('Carousel or items not found in the DOM');
+        return;
+    }
+
+    function updateCarousel() {
+        if (carousel && items.length > 0) {
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+            console.log(`Updated carousel to index ${currentIndex}`); // Debug: Track updates
+        }
+    }
+
+    // Initialize carousel on load
     updateCarousel();
-});
 
-prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + items.length) % items.length;
-    updateCarousel();
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % items.length;
+        updateCarousel();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + items.length) % items.length;
+        updateCarousel();
+    });
 });
 
 // Contact form submission
