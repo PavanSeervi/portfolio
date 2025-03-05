@@ -1,27 +1,37 @@
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-        const navMenu = document.getElementById('nav-menu');
-        const hamburger = document.getElementById('hamburger');
-        if (navMenu.classList.contains('active')) {
-            navMenu.classList.remove('active');
-            hamburger.classList.remove('open');
-        }
-    });
-});
-
-// Hamburger menu
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    hamburger.classList.toggle('open');
-});
-
-// Carousel with Debugging and Fallback
+// Show loading page on page load
 document.addEventListener('DOMContentLoaded', () => {
+    const loading = document.getElementById('loading');
+
+    // Hide loading after a short delay (e.g., 1 second) or when content is loaded
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            loading.classList.add('hidden');
+        }, 1000); // 1-second delay for visibility
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            const navMenu = document.getElementById('nav-menu');
+            const hamburger = document.getElementById('hamburger');
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('open');
+            }
+        });
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        hamburger.classList.toggle('open');
+    });
+
+    // Carousel with Debugging and Fallback
     const carousel = document.querySelector('.carousel');
     const items = document.querySelectorAll('.carousel-item');
     const prevBtn = document.getElementById('prev-btn');
@@ -76,8 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateCarousel = () => {
         carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
         console.log('Carousel updated to index:', currentIndex);
-        // Ensure all items are visible initially
-        items.forEach(item => item.style.display = 'block');
+        items.forEach((item, index) => {
+            item.style.display = 'block';
+            item.style.transform = 'none';
+        });
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
     };
 
     nextBtn.addEventListener('click', () => {
