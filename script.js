@@ -1,35 +1,26 @@
-// Smooth scrolling and hamburger close
+// Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('click', (e) => {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-        // Close hamburger menu on click
+        document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
         const navMenu = document.getElementById('nav-menu');
         const hamburger = document.getElementById('hamburger');
         if (navMenu.classList.contains('active')) {
             navMenu.classList.remove('active');
             hamburger.classList.remove('open');
-            hamburger.setAttribute('aria-expanded', 'false');
-            navMenu.setAttribute('aria-hidden', 'true');
         }
     });
 });
 
-// Hamburger menu toggle
+// Hamburger menu
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
-
 hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
-    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-    hamburger.setAttribute('aria-expanded', !isExpanded);
-    navMenu.setAttribute('aria-hidden', isExpanded);
     hamburger.classList.toggle('open');
 });
 
-// Carousel functionality with debugging
+// Carousel with Debugging and Fallback
 document.addEventListener('DOMContentLoaded', () => {
     const carousel = document.querySelector('.carousel');
     const items = document.querySelectorAll('.carousel-item');
@@ -37,22 +28,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('next-btn');
     let currentIndex = 0;
 
-    console.log('Carousel items:', items); // Debug: Check if items are found
+    // Debugging logs
+    console.log('Carousel found:', carousel);
+    console.log('Carousel items count:', items.length);
+    console.log('Prev button:', prevBtn);
+    console.log('Next button:', nextBtn);
 
-    if (!carousel || items.length === 0) {
-        console.error('Carousel or items not found in the DOM');
+    // Ensure carousel or fallback is always displayed
+    if (!carousel || !items.length) {
+        console.error('Carousel elements not found. Displaying certifications statically.');
+        if (carousel && items.length) {
+            carousel.classList.add('static');
+            items.forEach(item => {
+                item.style.minWidth = 'auto';
+                item.style.transform = 'none';
+                item.style.display = 'block';
+                item.style.background = '#EFE9E0';
+                item.style.color = '#333';
+                item.style.padding = '1.5rem';
+                item.style.borderRadius = '5px';
+                item.style.marginBottom = '1rem';
+                item.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
+            });
+            if (prevBtn) prevBtn.style.display = 'none';
+            if (nextBtn) nextBtn.style.display = 'none';
+        }
         return;
     }
 
-    function updateCarousel() {
-        if (carousel && items.length > 0) {
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-            console.log(`Updated carousel to index ${currentIndex}`); // Debug: Track updates
-        }
+    if (!prevBtn || !nextBtn) {
+        console.error('Carousel buttons not found. Displaying certifications statically.');
+        carousel.classList.add('static');
+        items.forEach(item => {
+            item.style.minWidth = 'auto';
+            item.style.transform = 'none';
+            item.style.display = 'block';
+            item.style.background = '#EFE9E0';
+            item.style.color = '#333';
+            item.style.padding = '1.5rem';
+            item.style.borderRadius = '5px';
+            item.style.marginBottom = '1rem';
+            item.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
+        });
+        return;
     }
 
-    // Initialize carousel on load
-    updateCarousel();
+    const updateCarousel = () => {
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        console.log('Carousel updated to index:', currentIndex);
+        // Ensure all items are visible initially
+        items.forEach(item => item.style.display = 'block');
+    };
 
     nextBtn.addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % items.length;
@@ -63,16 +89,31 @@ document.addEventListener('DOMContentLoaded', () => {
         currentIndex = (currentIndex - 1 + items.length) % items.length;
         updateCarousel();
     });
+
+    updateCarousel(); // Initial render
 });
 
-// Contact form submission
-const contactForm = document.getElementById('contact-form');
-contactForm.addEventListener('submit', (e) => {
+// Back to Top
+const backToTop = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+    backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+});
+backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Contact Form (EmailJS)
+emailjs.init('YOUR_USER_ID'); // Replace with your EmailJS user ID
+document.getElementById('contact-form').addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    console.log('Form Submitted:', { name, email, message });
-    alert('Message sent! (This is a demo—form data logged to console.)');
-    contactForm.reset();
+    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value
+    }).then(() => {
+        alert('Message sent successfully!');
+        document.getElementById('contact-form').reset();
+    }, (error) => {
+        alert('Failed to send message: ' + error.text);
+    });
 });
