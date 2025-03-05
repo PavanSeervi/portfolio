@@ -395,12 +395,21 @@ h3 {
     background: #a0430A;
     color: #EFE9E0;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    /* Increased for perfect circle */
+    height: 50px;
+    /* Increased for perfect circle */
     border-radius: 50%;
+    /* Ensure perfect circle */
     cursor: pointer;
     z-index: 1000;
     font-size: 1.2rem;
+    line-height: 50px;
+    /* Center the arrow vertically */
+    text-align: center;
+    /* Center the arrow horizontally */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Add shadow for visibility */
 }
 
 #back-to-top:hover {
@@ -467,5 +476,18 @@ footer {
         width: 60%;
         max-width: 250px;
         margin: 0.5rem auto;
+    }
+
+    #back-to-top {
+        width: 40px;
+        /* Smaller circle for mobile */
+        height: 40px;
+        bottom: 15px;
+        /* Adjust position for mobile */
+        right: 15px;
+        font-size: 1rem;
+        /* Smaller font for mobile */
+        line-height: 40px;
+        /* Adjust line-height for smaller size */
     }
 }
