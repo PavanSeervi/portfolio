@@ -30,22 +30,16 @@ body {
     text-align: center;
 }
 
-.nav-menu {
-    list-style: none;
-}
-
-.nav-menu li a {
+.nav-menu a {
     color: #EFE9E0;
     text-decoration: none;
     font-weight: 600;
     display: block;
     padding: 0.8rem 1rem;
-    text-align: left;
     transition: background-color 0.3s, color 0.3s;
 }
 
-.nav-menu li a:hover {
-    color: #EFE9E0;
+.nav-menu a:hover {
     background-color: #8a3708;
     text-decoration: underline;
 }
@@ -56,10 +50,8 @@ body {
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
-    margin-bottom: 1rem;
     background: none;
     border: none;
-    padding: 0;
 }
 
 .hamburger span {
@@ -74,7 +66,7 @@ main {
     padding: 2rem;
 }
 
-/* Ensure hero section has a contrasting background */
+/* Hero */
 #hero {
     background: linear-gradient(135deg, #a0430A, #a0430A);
     color: #EFE9E0;
@@ -85,39 +77,49 @@ main {
 .hero-content h2 {
     font-size: 2.8rem;
     margin-bottom: 1rem;
+    color: #EFE9E0;
+    /* Ensure the heading is visible (white text on dark background) */
+    visibility: visible;
+    /* Ensure no hidden styles */
 }
 
 .hero-content p {
     font-size: 1.3rem;
     margin-bottom: 2rem;
+    color: #EFE9E0;
+    /* Ensure paragraph is visible */
 }
 
-/* Button styling for anchor tags */
+/* Buttons */
 .btn {
     display: inline-block;
     padding: 0.8rem 2rem;
-    background-color: #EFE9E0;
-    color: #a0430A;
+    background-color: #EFE9E0 !important;
+    color: #a0430A !important;
     text-decoration: none;
     border-radius: 5px;
-    margin: 0 1rem;
     font-weight: 600;
     border: 2px solid #a0430A;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s, color 0.3s;
     cursor: pointer;
 }
 
-/* Hover effect */
 .btn:hover {
-    background-color: #a0430A;
-    color: #EFE9E0;
-    text-decoration: none;
+    background-color: #a0430A !important;
+    color: #EFE9E0 !important;
 }
 
-/* Specificity fix for hero section buttons */
-#hero .btn {
-    background-color: #EFE9E0;
-    color: #a0430A;
+/* Specific styles for hero and projects buttons */
+#hero .btn,
+#projects .btn {
+    background-color: #EFE9E0 !important;
+    color: #a0430A !important;
+}
+
+#hero .btn:hover,
+#projects .btn:hover {
+    background-color: #a0430A !important;
+    color: #EFE9E0 !important;
 }
 
 section {
@@ -137,8 +139,15 @@ section {
 
 h2 {
     font-size: 2.2rem;
+    font-weight: 700;
     margin-bottom: 2rem;
-    color: #a0430A;}
+    color: #a0430A;
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
 
 /* Skills */
 .skills-container {
@@ -153,13 +162,18 @@ h2 {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    position: relative;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .skill-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.skill-card i {
+    font-size: 2rem;
+    color: #a0430A;
+    margin-bottom: 0.5rem;
 }
 
 .skill-card h3 {
@@ -202,6 +216,7 @@ h2 {
     visibility: visible;
 }
 
+/* Experience & Projects */
 .exp-card,
 .project-card {
     background: #EFE9E0;
@@ -211,11 +226,27 @@ h2 {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.project-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+/* Certifications Section */
+#certifications {
+    max-width: 1200px;
+    margin: 4rem auto;
+}
+
 .carousel {
     display: flex;
-    overflow: hidden;
+    overflow: visible;
+    /* Ensure all items are visible */
     position: relative;
     max-width: 100%;
+    height: auto;
 }
 
 .carousel-item {
@@ -225,7 +256,10 @@ h2 {
     padding: 1.5rem;
     text-align: center;
     border-radius: 5px;
-    transition: transform 0.5s;
+    transition: transform 0.5s ease;
+    flex-shrink: 0;
+    display: block;
+    /* Ensure visibility */
 }
 
 #prev-btn,
@@ -238,6 +272,7 @@ h2 {
     padding: 0.5rem;
     color: #a0430A;
     cursor: pointer;
+    z-index: 10;
 }
 
 #prev-btn {
@@ -248,41 +283,128 @@ h2 {
     right: 0;
 }
 
-/* Contact Form */
+.carousel.static {
+    flex-direction: column;
+    overflow: visible;
+}
+
+.carousel.static .carousel-item {
+    min-width: auto;
+    background: #EFE9E0;
+    color: #333;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+/* Contact */
 .contact-form {
     background: #EFE9E0;
+    padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.contact-form .form-label {
+.form-label {
     color: #a0430A;
     font-weight: 600;
 }
 
-.contact-form .form-control {
+.form-control {
     border-radius: 5px;
     border: 1px solid #ced4da;
     transition: border-color 0.3s;
 }
 
-.contact-form .form-control:focus {
+.form-control:focus {
     border-color: #a0430A;
     box-shadow: 0 0 5px rgba(160, 67, 10, 0.5);
 }
 
-.contact-form .btn-primary {
-    background: #EFE9E0;
+.btn-primary {
+    background: #EFE9E0 !important;
     border: none;
     padding: 0.8rem;
     font-weight: 600;
-    color: #a0430A;
-    transition: background 0.3s;
+    color: #a0430A !important;
+    border: 2px solid #a0430A;
+    /* Match other buttons */
+    transition: background-color 0.3s, color 0.3s;
+    /* Add transition for hover */
 }
 
-.contact-form .btn-primary:hover {
+.btn-primary:hover {
+    background: #a0430A !important;
+    color: #EFE9E0 !important;
+}
+
+.contact-links {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Education & Hobbies */
+.education-container,
+.hobbies-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.education-card,
+.hobby-card {
+    background: #EFE9E0;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.education-card:hover,
+.hobby-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.education-card h3 {
+    color: #a0430A;
+    margin-bottom: 0.5rem;
+}
+
+.institution {
+    font-weight: 600;
+}
+
+.duration {
+    font-style: italic;
+    color: #666;
+}
+
+.hobby-card i {
+    font-size: 2rem;
+    color: #a0430A;
+    margin-bottom: 0.5rem;
+}
+
+/* Back to Top */
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
     background: #a0430A;
     color: #EFE9E0;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 1.2rem;
+}
+
+#back-to-top:hover {
+    background: #8a3708;
 }
 
 footer {
@@ -293,75 +415,15 @@ footer {
     margin-top: 4rem;
 }
 
-/* Education Section */
-#education {
-    max-width: 1200px;
-    margin: 4rem auto;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 0.5s forwards;
-}
-
-.education-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.education-card {
-    background: #EFE9E0;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.education-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
-.education-card h3 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #a0430A;
-    margin-bottom: 0.5rem;
-}
-
-.education-card .institution {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 0.3rem;
-}
-
-.education-card .duration {
-    font-size: 1rem;
-    font-style: italic;
-    color: #666;
-    margin-bottom: 0.5rem;
-}
-
-.education-card .details {
-    font-size: 0.95rem;
-    color: #444;
-    line-height: 1.4;
-}
-
 /* Media Queries */
 @media (max-width: 768px) {
     .sidebar {
         width: 100%;
         height: auto;
-        position: fixed;
-        top: 0;
-        left: 0;
         padding: 1rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap;
-        z-index: 1000;
     }
 
     .sidebar h1 {
@@ -370,37 +432,26 @@ footer {
 
     .hamburger {
         display: flex;
-        order: 2;
-        margin-left: auto;
     }
 
     .nav-menu {
         display: none;
-        width: 100%;
         position: absolute;
         top: 100%;
         left: 0;
+        width: 100%;
         background: #a0430A;
         padding: 1rem;
-        z-index: 999;
-        transition: opacity 0.3s ease-in-out;
-        opacity: 0;
     }
 
     .nav-menu.active {
         display: block;
-        opacity: 1;
-    }
-
-    .nav-menu li a:focus {
-        outline: 2px solid #EFE9E0;
-        outline-offset: 2px;
     }
 
     main {
         margin-left: 0;
-        padding: 1rem;
         margin-top: 60px;
+        padding: 1rem;
     }
 
     .hero-content h2 {
@@ -411,80 +462,10 @@ footer {
         font-size: 1.8rem;
     }
 
-    /* Fix for hero section buttons to match the screenshot */
-    .hero-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-        padding: 2rem 1rem;
-    }
-
     .btn {
         display: block;
         width: 60%;
         max-width: 250px;
         margin: 0.5rem auto;
-        padding: 0.7rem 1.5rem;
-        text-align: center;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .contact-form {
-        padding: 1.5rem;
-    }
-
-    .education-card {
-        padding: 1rem;
-    }
-
-    .education-card h3 {
-        font-size: 1.2rem;
-    }
-
-    .education-card .institution {
-        font-size: 1rem;
-    }
-
-    .education-card .duration {
-        font-size: 0.9rem;
-    }
-
-    .education-card .details {
-        font-size: 0.85rem;
-    }
-}
-
-@media (min-width: 769px) {
-    .hamburger {
-        display: none;
-    }
-
-    .nav-menu {
-        display: block;
-        position: static;
-        width: auto;
-        padding: 0;
-        opacity: 1;
-        transition: none;
-    }
-
-    main {
-        margin-left: 250px;
-    }
-
-    .hero-content {
-        display: block;
-    }
-
-    .btn {
-        display: inline-block;
-        width: auto;
-        margin: 0 1rem;
-        padding: 0.8rem 2rem;
-    }
-
-    .education-container {
-        flex-direction: column;
     }
 }
