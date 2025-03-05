@@ -4,30 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Pavan Seervi - Electronics & Communication Engineer turned Full-Stack Developer skilled in Java, MERN Stack, and more.">
+    <meta name="keywords" content="Pavan Seervi, portfolio, developer, MERN, Java, JavaScript, web development">
     <title>Pavan Seervi - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
     <div class="sidebar" id="sidebar">
         <h1>Pavan Seervi</h1>
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
         </button>
-        <ul class="nav-menu" id="nav-menu" aria-hidden="true">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <nav class="nav-menu" id="nav-menu">
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#hobbies">Hobbies</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </div>
 
     <main>
@@ -52,36 +55,42 @@
             <h2>Technical Skills</h2>
             <div class="skills-container">
                 <div class="skill-card" data-tooltip="Advanced proficiency">
+                    <i class="fab fa-java"></i>
                     <h3>Java</h3>
                     <div class="progress-bar">
                         <div class="progress" style="width: 85%;"></div>
                     </div>
                 </div>
                 <div class="skill-card" data-tooltip="Strong scripting skills">
+                    <i class="fab fa-js"></i>
                     <h3>JavaScript</h3>
                     <div class="progress-bar">
                         <div class="progress" style="width: 80%;"></div>
                     </div>
                 </div>
                 <div class="skill-card" data-tooltip="Intermediate knowledge">
+                    <i class="fab fa-python"></i>
                     <h3>Python</h3>
                     <div class="progress-bar">
                         <div class="progress" style="width: 60%;"></div>
                     </div>
                 </div>
                 <div class="skill-card" data-tooltip="Frontend essentials">
+                    <i class="fab fa-html5"></i>
                     <h3>HTML/CSS</h3>
                     <div class="progress-bar">
                         <div class="progress" style="width: 90%;"></div>
                     </div>
                 </div>
                 <div class="skill-card" data-tooltip="Building dynamic UIs">
+                    <i class="fab fa-react"></i>
                     <h3>React.js</h3>
                     <div class="progress-bar">
                         <div class="progress" style="width: 75%;"></div>
                     </div>
                 </div>
                 <div class="skill-card" data-tooltip="Backend development">
+                    <i class="fab fa-node-js"></i>
                     <h3>Node.js</h3>
                     <div class="progress-bar">
                         <div class="progress" style="width: 70%;"></div>
@@ -114,19 +123,28 @@
         <section id="projects">
             <h2>Projects</h2>
             <div class="project-card">
-                <h3>Authenticated Access Control for Vehicle Ignition</h3>
-                <p>A secure system using fingerprint and license authentication.</p>
-                <p><strong>Tech:</strong> Hardware-Software Integration</p>
-            </div>
-            <div class="project-card">
+                <img src="ssg.png" alt="Simon Says Game" class="project-img" loading="lazy">
                 <h3>Simon Says Game</h3>
                 <p>Interactive memory game with dynamic UI.</p>
                 <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+                <a href="https://github.com/PavanSeervi/simon-says-game.git" target="_blank" class="btn">View Code</a>
+                <a href="https://your-live-demo-link.com" target="_blank" class="btn">Live Demo</a>
             </div>
             <div class="project-card">
+                <img src="https://via.placeholder.com/300x150" alt="Vehicle Ignition System" class="project-img"
+                    loading="lazy">
+                <h3>Authenticated Access Control for Vehicle Ignition</h3>
+                <p>A secure system using fingerprint and license authentication.</p>
+                <p><strong>Tech:</strong> Hardware-Software Integration</p>
+                <a href="https://github.com/yourusername/vehicle-ignition" target="_blank" class="btn">View Code</a>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x150" alt="Personal Finance Manager" class="project-img"
+                    loading="lazy">
                 <h3>Personal Finance Manager</h3>
                 <p>Web app for budgeting and banking.</p>
                 <p><strong>Tech:</strong> React.js, Node.js, MongoDB</p>
+                <a href="https://github.com/yourusername/finance-manager" target="_blank" class="btn">View Code</a>
             </div>
         </section>
 
@@ -142,13 +160,13 @@
                 </div>
                 <div class="education-card">
                     <h3>Intermediate (MPC)</h3>
-                    <p class="institution">Narayana Jr College, Telangana State Board of Intermediate Education</p>
+                    <p class="institution">Narayana Jr College, Telangana State Board</p>
                     <p class="duration">2017 - 2019</p>
                     <p class="details">Mathematics, Physics, Chemistry</p>
                 </div>
                 <div class="education-card">
                     <h3>Matriculation</h3>
-                    <p class="institution">St. Alphonsus High School, Board of Secondary Education (BSE) Telangana</p>
+                    <p class="institution">St. Alphonsus High School, BSE Telangana</p>
                     <p class="duration">2017</p>
                     <p class="details">General Secondary Education</p>
                 </div>
@@ -164,37 +182,42 @@
                 <div class="carousel-item">Advanced JavaScript - FreeCodeCamp (2022)</div>
                 <div class="carousel-item">React.js Professional - LinkedIn Learning (2023)</div>
             </div>
-            <button id="prev-btn">◄</button>
-            <button id="next-btn">►</button>
+            <button id="prev-btn" aria-label="Previous certification">◄</button>
+            <button id="next-btn" aria-label="Next certification">►</button>
+        </section>
+
+        <section id="hobbies">
+            <h2>Hobbies</h2>
+            <div class="hobbies-container">
+                <div class="hobby-card"><i class="fas fa-bicycle"></i>
+                    <p>Cycling</p>
+                </div>
+                <div class="hobby-card"><i class="fas fa-pray"></i>
+                    <p>Meditation</p>
+                </div>
+            </div>
         </section>
 
         <section id="contact">
             <h2>Contact Me</h2>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <form id="contact-form" class="p-4 rounded shadow-sm contact-form">
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Your Name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Your Email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control" id="message" rows="5" placeholder="Your Message"
-                                    required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
-                        </form>
-                        <div class="mt-3 text-center">
-                            <p>Email: <a href="mailto:pavanseervi52@gmail.com">pavanseervi52@gmail.com</a></p>
-                            <p><a href="#">LinkedIn</a> | <a href="#">GitHub</a></p>
-                        </div>
-                    </div>
+            <form id="contact-form" class="contact-form">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Your Name" required>
                 </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Send Message</button>
+            </form>
+            <div class="contact-links">
+                <p>Email: <a href="mailto:pavanseervi52@gmail.com">pavanseervi52@gmail.com</a></p>
+                <p><a href="#">LinkedIn</a> | <a href="#">GitHub</a></p>
             </div>
         </section>
 
@@ -203,6 +226,9 @@
         </footer>
     </main>
 
+    <button id="back-to-top" class="btn">↑ Top</button>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
